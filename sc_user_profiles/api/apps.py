@@ -10,4 +10,5 @@ class ApiConfig(AppConfig):
     def ready(self):
     	from api.models import User, Profile
     	import api.signals  # noqa
-    	# post_save.connect(manipulate_user_profile, sender=User)
+    	from api.signals import manipulate_user_profile
+    	post_save.connect(manipulate_user_profile, sender=User)

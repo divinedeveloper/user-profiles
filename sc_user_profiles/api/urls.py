@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from api.views import UserList
 from api import views
 
 urlpatterns = [
     path('addUser', views.create_user, name='create_user'),
-    path('listUsers', views.list_users, name='list_users'),
-    path('deleteUser', views.home, name='home'),
-    path('updateUserDetails', views.home, name='home'),
+    path('listUsers', UserList.as_view(), name='list'),
+    path('deleteUser/<int:user_id>', views.delete_user, name='delete_user'),
+    path('updateUserDetails/<int:user_id>', views.updateUserDetails, name='updateUserDetails'),
     path('listProfiles/<int:user_id>', views.list_profiles, name='list_profiles'),
 ]

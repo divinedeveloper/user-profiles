@@ -134,10 +134,14 @@ STATICFILES_DIRS = (
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny'
     ],
     'EXCEPTION_HANDLER': 'api.custom_exceptions.custom_exception_handler'
 }
 ########## END REST FRAMEWORK CONFIGURATION
+
+INTERNAL_SERVER_ERROR = "Something went wrong at our end. Please try again later"
 
